@@ -12,11 +12,26 @@ def evaluate(tree)
     evaluate(tree[1]) * evaluate(tree[2])
   when "/"
     evaluate(tree[1]) / evaluate(tree[2])
+  when "%"
+    evaluate(tree[1]) % evaluate(tree[2])
+  when "**"
+    evaluate(tree[1]) ** evaluate(tree[2])
+  when "<"
+    evaluate(tree[1]) < evaluate(tree[2])
+  when ">"
+    evaluate(tree[1]) > evaluate(tree[2])
+  when "=="
+    evaluate(tree[1]) == evaluate(tree[2])
   end
+end
+
+def max(tree)
+  tree.flatten.select{|e| e.is_a?(Integer)}.max
 end
 
 str = gets
 
 tree = minruby_parse(str)
+pp max(tree)
 answer = evaluate(tree)
 p(answer)
